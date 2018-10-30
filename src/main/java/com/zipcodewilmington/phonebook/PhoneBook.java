@@ -44,22 +44,27 @@ public class PhoneBook {
     }
 
     //convert to a set
-    public String reverseLookup(ArrayList<String> phoneNumber) {
+    public String reverseLookup(String number) {
         String revLookupName = "";
-            for (Map.Entry<String, ArrayList<String>> map : phoneBook.entrySet()) {
-                if (map.getValue().equals(phoneNumber)) {
-                    revLookupName = map.getKey();
+        for (String key : phoneBook.keySet()) {
+            ArrayList<String> numList = phoneBook.get(key);
+            for (String listItem : numList) {
+                if (listItem.equals(number)) {
+                    revLookupName = key;
                 }
             }
-         return revLookupName;
+        }
+            return revLookupName;
     }
 
     public String listNamesAndNumbers() {
         String namesAndNumbers = "";
-        for (Map.Entry<String, ArrayList<String>> map : phoneBook.entrySet()){
-            namesAndNumbers += "Name: " + map.getKey() + "|   Phone Number(s): " + map.getValue();
+        for (String name : phoneBook.keySet()){
+//            namesAndNumbers += "Name: " + map.getKey() + "|   Phone Number(s): " + map.getValue();
+            for(String number : phoneBook.get(name)){
+                namesAndNumbers += (name + "    " + number);
+            }
         }
-        System.out.println(namesAndNumbers);
         return namesAndNumbers;
     }
 }

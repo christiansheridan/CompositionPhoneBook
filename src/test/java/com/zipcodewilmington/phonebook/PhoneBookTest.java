@@ -60,7 +60,7 @@ public class PhoneBookTest {
 
         //When
         String expectedOutput = "AA";
-        String actualOutput = book.reverseLookup(book.phoneNumber);
+        String actualOutput = book.reverseLookup("211-111-2222");
 
         //Then
         Assert.assertEquals(expectedOutput, actualOutput);
@@ -70,11 +70,11 @@ public class PhoneBookTest {
     public void testListNamesAndNumbers(){
 
         //When
-        String expectedOutput = "AA 211-111-2222";
+        String expectedOutput = "AA    211-111-2222";
         String actualOutput = book.listNamesAndNumbers();
 
-        System.out.println(book.listNamesAndNumbers());
+
         //Then
-        //Assert.assertTrue(expectedOutput, actualOutput);
+        Assert.assertEquals(expectedOutput, actualOutput);
     }
 }
